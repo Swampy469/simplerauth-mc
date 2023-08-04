@@ -20,6 +20,10 @@ public class PlayerObject {
         this.loginAttempts = 0;
     }
 
+    public void deauthenticate() {
+        this.authenticated = false;
+    }
+
     public boolean isAuthenticated() {
         return authenticated;
     }

@@ -28,6 +28,7 @@ public class AuthMod implements ModInitializer {
         LangManager.loadTranslations(ConfigManager.getString("language"));
         CommandRegistrationCallback.EVENT.register(((dispatcher, dedicated) -> {
             LoginCommand.registerCommand(dispatcher);
+            LogoutCommand.registerCommand(dispatcher);
             RegisterCommand.registerCommand(dispatcher);
             ChangePasswordCommand.registerCommand(dispatcher);
             OnlineAuthCommand.registerCommand(dispatcher);

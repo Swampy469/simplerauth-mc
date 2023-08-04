@@ -2,6 +2,7 @@
   "command.login.notregistered": "§cYou are not registered! Use §f/register §cinstead.",
   "command.login.wrongpassword": "§cWrong password!",
   "command.login.alreadylogged": "§cAlready authenticated!",
+  "command.logout.disconnected": "Disconnected",
   "command.register.alreadyregistered": "§cYou are already registered! Use §f/login §cinstead.",
   "command.register.globaltype": "§cGlobal password is set on this server, registration is not possible! Use §f/login",
   "command.register.passweak": "§cThis password is too weak! Please, try a stronger one.",
