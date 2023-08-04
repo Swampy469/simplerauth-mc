@@ -80,10 +80,16 @@ public class LoginCommand {
         String username = player.getEntityName();
         
         if (!isPasswordCorrect(player, password)) {
-            // TODO: fails and kick after x fails
-            PlayerAuthEvents.PLAYER_LOGIN_FAIL.invoker().onPlayerLoginFail(player, 1);
+            playerObject.loginAttempts++;
+            PlayerAuthEvents.PLAYER_LOGIN_FAIL.invoker().onPlayerLoginFail(player, playerObject.loginAttempts);
             String message = ConfigManager.getAuthType().equals("2fa") ? "command.general.2fa.incorrect" : "command.general.notmatch";
-            player.networkHandler.disconnect(LangManager.getLiteralText(message));
+
+            player.sendMessage(LangManager.getLiteralText(message), false);
+
+            //Kick after 3 attemps
+            if(playerObject.loginAttempts > 2) {
+                player.networkHandler.disconnect(LangManager.getLiteralText(message));
+            }
             return 0;
         }
         playerObject.authenticate();
@@ -91,7 +97,7 @@ public class LoginCommand {
         if (ConfigManager.getBoolean("sessions-enabled")) {
             DbManager.sessionCreate(player.getEntityName(), player.getIp());
         }
-        ctx.getSource().sendFeedback(LangManager.getLiteralText("command.general.authenticated"), false);
+        player.sendMessage(LangManager.getLiteralText("command.general.authenticated"), false);
         if (ConfigManager.getBoolean("hide-position")) {
             Vec3d pos = DbManager.getPosition(username);
             if (pos != null)

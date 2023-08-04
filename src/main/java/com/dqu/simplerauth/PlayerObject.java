@@ -6,14 +6,18 @@ public class PlayerObject {
     private ServerPlayerEntity player;
     private boolean authenticated;
 
+    public int loginAttempts;
+
     public PlayerObject(ServerPlayerEntity player) {
         this.player = player;
         this.authenticated = false;
+        this.loginAttempts = 0;
     }
 
     public void authenticate() {
         this.player.setInvulnerable(false);
         this.authenticated = true;
+        this.loginAttempts = 0;
     }
 
     public boolean isAuthenticated() {
