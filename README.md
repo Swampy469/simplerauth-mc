@@ -4,6 +4,7 @@
 
 **Commands**
 - /login <password> : Login into your account
+- /logout : Logout from the account and disconnect from the server
 - /register <password> <repeatPassword> : Register a new account
 - /changepassword <oldPassword> <newPassword> : Change your account password
 - /onlineauth : Allows to enable optional online authentication
